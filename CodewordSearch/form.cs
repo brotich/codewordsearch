@@ -30,8 +30,6 @@ namespace CodewordSearch
 
         private void Search_Click(object sender, EventArgs e)
         {
-            var test = textBox1.Text;       //temp code
-            textBox2.Text = null;//temp code
             
         }//search click
 
