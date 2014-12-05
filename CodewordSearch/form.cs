@@ -35,6 +35,41 @@ namespace CodewordSearch
             
         }//search click
 
+        /// <summary>
+        /// Generates a dictionary of characters and location in the input string
+        /// </summary>
+        /// <param name="inputString">The ssource string</param>
+        /// <returns>Dictionary(char, int[]) of the charcters in the array</returns>
+        private Dictionary<char, int[]> createPattern(string inputString)
+        {
+            //check for null string input
+            isStringNull(inputString);
+            //create dictionary to hold the char
+            Dictionary<char, int[]> dictionary = new Dictionary<char, int[]>();
+            //iterate over the pattern to find char
+            foreach (char ch in inputString.ToCharArray())
+            {
+                //add char and location if not
+                if (!dictionary.ContainsKey(ch))
+                {
+                    //list hold the array
+                    List<int> loc = new List<int>();
+                    //find matching charcters in the array
+                    for( int i = 0; i < inputString.Length; i++)
+                    {
+                        char sameCh = inputString[i];
+                        //if matching add to array
+                        if (sameCh == ch)
+                        {
+                            loc.Add(i);
+                        }
+                    }//for each
+                    //add to dictinary
+                    dictionary.Add(ch, loc.ToArray() );
+                }//if
+            }//foreach
+            return dictionary;
+        }//create pattern
 
         /// <summary>
         /// method to remove dashes from text
