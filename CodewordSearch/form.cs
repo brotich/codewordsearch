@@ -120,6 +120,19 @@ namespace CodewordSearch
 
 
         /// <summary>
+        /// Method to replace from the string with _
+        /// </summary>
+        /// <param name="input">Input containing numbers</param>
+        /// <returns>String with numbers replaced with underscore</returns>
+        private string replaceNumberWithUnderScore(string input)
+        {
+            //check for null string
+            isStringNull(input);
+            //replace string with underscore
+            return System.Text.RegularExpressions.Regex.Replace(input, @"/d", "");
+        }//replaceNumbers
+
+        /// <summary>
         /// Checks for the null or empty string
         /// </summary>
         /// <param name="input">String to check for empty or null</param>
