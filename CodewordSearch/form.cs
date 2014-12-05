@@ -129,7 +129,7 @@ namespace CodewordSearch
             //check for null string
             isStringNull(input);
             //replace string with underscore
-            return System.Text.RegularExpressions.Regex.Replace(input, @"/d", "");
+            return System.Text.RegularExpressions.Regex.Replace(input, @"\d", "_");
         }//replaceNumbers
 
         /// <summary>
