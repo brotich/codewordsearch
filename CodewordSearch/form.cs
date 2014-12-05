@@ -28,10 +28,47 @@ namespace CodewordSearch
             connection = new SQLite.Search(path);
         }//initilize
 
+
+        //button clicked
         private void Search_Click(object sender, EventArgs e)
         {
-            
         }//search click
+
+        /// <summary>
+        /// Matches a string to a pattern 
+        /// </summary>
+        /// <param name="word">The word to Match to pattern</param>
+        /// <param name="pattern">Dictionary containing the location of characters</param>
+        /// <returns>True if the word matches</returns>
+        private bool isMatching(string word, Dictionary<char, int[]> pattern)
+        {
+            //check if the string is null
+            isStringNull(word);
+            //check dictonary is null
+            if (pattern == null) { throw new ArgumentNullException("pattern", "The pattern is null"); }
+            //iterate over the dictionary
+            foreach (var item in pattern)
+            {
+                //check if the key is digit
+                if (char.IsDigit(item.Key))
+                {
+                    //location of similar characters
+                    var loc = item.Value;
+                    //if has more than one location
+                    if (loc.Length > 1)
+                    {
+                        //compare index 1 to other location
+                        foreach (int index in loc)
+                        {
+                            //return false if not the same
+                            if (word[loc[0]] != word[index])  return false;
+                        }//for each
+                    }//if
+                }//if
+            }//foreach
+            //if reach here the word matches
+            return true;
+        }//isMatching
 
         /// <summary>
         /// Generates a dictionary of characters and location in the input string
@@ -82,6 +119,10 @@ namespace CodewordSearch
         }//removeDashes
 
 
+        /// <summary>
+        /// Checks for the null or empty string
+        /// </summary>
+        /// <param name="input">String to check for empty or null</param>
         private void isStringNull(string input)
         {
             //the input string is empty or null complain
