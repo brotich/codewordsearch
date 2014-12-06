@@ -107,17 +107,6 @@ namespace CodewordSearch
             return dictionary;
         }//create pattern
 
-        /// <summary>
-        /// method to remove dashes from text
-        /// </summary>
-        /// <param name="input">The String Containing dashes</param>
-        /// <returns>String with dashes removed</returns>
-        private string removeDashes(string input)
-        {
-            //check input string for null
-            isStringNull(input);
-            return System.Text.RegularExpressions.Regex.Replace(input, @"-", "");
-        }//removeDashes
 
         /// <summary>
         /// Returns array of sting[] of input, separates using '-'
