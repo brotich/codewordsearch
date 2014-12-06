@@ -154,7 +154,10 @@ namespace CodewordSearch
             foreach (string item in inputArray)
             {
                 if (int.TryParse(item, out r))
+                {
+                    if (r < 1 || r > 26) throw new ArgumentException("Valid input numbers are 1-26");
                     toSearch += '_';
+                }
                 else
                     toSearch += item;
             }//for each
