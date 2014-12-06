@@ -32,7 +32,7 @@ namespace CodewordSearch
         //button clicked
         private void Search_Click(object sender, EventArgs e)
         {
-            
+                    
         }//search click
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace CodewordSearch
         /// <param name="word">The word to Match to pattern</param>
         /// <param name="pattern">Dictionary containing the location of characters</param>
         /// <returns>True if the word matches</returns>
-        private bool isMatching(string word, Dictionary<char, int[]> pattern)
+        private bool isMatching(string word, Dictionary<string, int[]> pattern)
         {
             //check if the string is null
             isStringNull(word);
@@ -50,8 +50,9 @@ namespace CodewordSearch
             //iterate over the dictionary
             foreach (var item in pattern)
             {
+                var t = -1;
                 //check if the key is digit
-                if (char.IsDigit(item.Key))
+                if (int.TryParse(item.Key,out  t))
                 {
                     //location of similar characters
                     var loc = item.Value;
@@ -76,14 +77,14 @@ namespace CodewordSearch
         /// </summary>
         /// <param name="inputString">The ssource string</param>
         /// <returns>Dictionary(char, int[]) of the charcters in the array</returns>
-        private Dictionary<char, int[]> createPattern(string inputString)
+        private Dictionary<string, int[]> createPattern(string[] inputArray)
         {
-            //check for null string input
-            isStringNull(inputString);
+            //check for null input array
+            if (inputArray == null) { throw new ArgumentNullException("inputArray", "Input array is null"); }
             //create dictionary to hold the char
-            Dictionary<char, int[]> dictionary = new Dictionary<char, int[]>();
+            Dictionary<string, int[]> dictionary = new Dictionary<string, int[]>();
             //iterate over the pattern to find char
-            foreach (char ch in inputString.ToCharArray())
+            foreach (string ch in inputArray)
             {
                 //add char and location if not
                 if (!dictionary.ContainsKey(ch))
@@ -91,9 +92,9 @@ namespace CodewordSearch
                     //list hold the array
                     List<int> loc = new List<int>();
                     //find matching charcters in the array
-                    for (int i = 0; i < inputString.Length; i++)
+                    for (int i = 0; i < inputArray.Length; i++)
                     {
-                        char sameCh = inputString[i];
+                        var sameCh = inputArray[i];
                         //if matching add to array
                         if (sameCh == ch)
                         {
@@ -122,16 +123,25 @@ namespace CodewordSearch
         }//createArray
 
         /// <summary>
-        /// Method to replace from the string with _
+        /// Method to replace numberswith _
         /// </summary>
         /// <param name="input">Input containing numbers</param>
         /// <returns>String with numbers replaced with underscore</returns>
-        private string replaceNumberWithUnderScore(string input)
+        private string replaceNumberWithUnderScore(string[] inputArray)
         {
-            //check for null string
-            isStringNull(input);
-            //replace string with underscore
-            return System.Text.RegularExpressions.Regex.Replace(input, @"\d", "_");
+            //check for null input
+            if (inputArray == null) { throw new ArgumentNullException("inputArray", "Input array is null"); }
+            //replace numbers in array with underscore
+            var toSearch = "";
+            var r = -1;
+            foreach (string item in inputArray)
+            {
+                if (int.TryParse(item, out r))
+                    toSearch += '_';
+                else
+                    toSearch += item;
+            }//for each
+            return toSearch;
         }//replaceNumbers
 
         /// <summary>
