@@ -14,7 +14,7 @@ namespace CodewordSearch
         //path to sqlite databse file
         string path = @"C:\Users\brian\Documents\Visual Studio 2010\Projects\CodewordSearchGUI\CodewordSearchGUI\test.sqlite";
         //connection to the database
-        private SQLite.Search connection; 
+        private SQLite.Search connection;
 
 
         public form()
@@ -32,6 +32,7 @@ namespace CodewordSearch
         //button clicked
         private void Search_Click(object sender, EventArgs e)
         {
+            
         }//search click
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace CodewordSearch
                         foreach (int index in loc)
                         {
                             //return false if not the same
-                            if (word[loc[0]] != word[index])  return false;
+                            if (word[loc[0]] != word[index]) return false;
                         }//for each
                     }//if
                 }//if
@@ -90,7 +91,7 @@ namespace CodewordSearch
                     //list hold the array
                     List<int> loc = new List<int>();
                     //find matching charcters in the array
-                    for( int i = 0; i < inputString.Length; i++)
+                    for (int i = 0; i < inputString.Length; i++)
                     {
                         char sameCh = inputString[i];
                         //if matching add to array
@@ -100,7 +101,7 @@ namespace CodewordSearch
                         }
                     }//for each
                     //add to dictinary
-                    dictionary.Add(ch, loc.ToArray() );
+                    dictionary.Add(ch, loc.ToArray());
                 }//if
             }//foreach
             return dictionary;
@@ -118,6 +119,18 @@ namespace CodewordSearch
             return System.Text.RegularExpressions.Regex.Replace(input, @"-", "");
         }//removeDashes
 
+        /// <summary>
+        /// Returns array of sting[] of input, separates using '-'
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string[] createArrayOfInput(string input)
+        {
+            //check if the string is null
+            isStringNull(input);
+            //split input using - to array
+            return input.Split('-');
+        }//createArray
 
         /// <summary>
         /// Method to replace from the string with _
