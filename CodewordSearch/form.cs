@@ -32,7 +32,24 @@ namespace CodewordSearch
         //button clicked
         private void Search_Click(object sender, EventArgs e)
         {
-                    
+            //read text from the input
+            var text = textBox1.Text.Trim();
+            //create array of the input
+            var array = createArrayOfInput(text);
+            //create pattern
+            var pattern = createPattern(array);
+            //prepare searchterm databse
+            var toSearch = replaceNumberWithUnderScore(array);
+            //search the database for matches
+            var result = connection.getMatches(toSearch);
+            //array to hold matches matching the pattern
+            var matches = new List<string>();
+            //search for matching pattterns
+            foreach (string i in result)
+                if (isMatching(i, pattern))
+                    matches.Add(i);
+            //display matches on the textbox
+            textBox3.Lines = matches.ToArray();
         }//search click
 
         /// <summary>
