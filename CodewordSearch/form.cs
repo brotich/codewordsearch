@@ -181,7 +181,7 @@ namespace CodewordSearch
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Version " + Application.ProductVersion, "Version", MessageBoxButtons.OK);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
