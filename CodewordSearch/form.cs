@@ -177,6 +177,16 @@ namespace CodewordSearch
         {
             //the input string is empty or null complain
             if (string.IsNullOrWhiteSpace(input)) { throw new NullReferenceException("Input string is null or empty"); }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }//isstringnull
     }//class form
 }//namespace
