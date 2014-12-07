@@ -48,7 +48,7 @@ namespace CodewordSearch
             //search for matching pattterns
             foreach (string i in result)
                 if (isMatching(i, pattern))
-                    matches.Add(i);
+                    matches.Add(i.ToUpper() );
             //display matches on the textbox
             textBox3.Lines = matches.ToArray();
         }//search click
