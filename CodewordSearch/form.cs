@@ -83,7 +83,7 @@ namespace CodewordSearch
                             if (word[loc[0]] != word[index]) return false;
                         }//for each
                     }//if
-                }//if
+                }//i
             }//foreach
             //if reach here the word matches
             return true;
