@@ -69,20 +69,27 @@ namespace CodewordSearch
             {
                 var t = -1;
                 //check if the key is digit
-                if (int.TryParse(item.Key,out  t))
+                if (int.TryParse(item.Key, out  t))
                 {
                     //location of similar characters
                     var loc = item.Value;
                     //if has more than one location
-                    if (loc.Length > 1)
+                    char ch = word[loc[0]];
+                    //compare index 1 to other location
+                    foreach (int index in loc)
                     {
-                        //compare index 1 to other location
-                        foreach (int index in loc)
-                        {
-                            //return false if not the same
-                            if (word[loc[0]] != word[index]) return false;
-                        }//for each
-                    }//if
+                        //return false if not the same
+                        if (ch != word[index]) return false;
+                    }//for each
+                    //count instancees of char ch in word
+                    var count = 0;
+                    foreach (char samech in word.ToCharArray())
+                    {
+                        //count instances of the character ch
+                        if (samech == ch) count++;
+                    }//foresch
+                    if (count != loc.Length) return false;
+                    //checkif word has multiple copies
                 }//if
             }//foreach
             //if reach here the word matches
