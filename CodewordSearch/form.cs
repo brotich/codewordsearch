@@ -34,6 +34,7 @@ namespace CodewordSearch
         {
             //read text from the input
             var text = textBox1.Text.Trim();
+            if (string.IsNullOrEmpty(text)) { return; }
             //create array of the input
             var array = createArrayOfInput(text);
             //create pattern
