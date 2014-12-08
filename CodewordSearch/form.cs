@@ -51,6 +51,8 @@ namespace CodewordSearch
                     matches.Add(i.ToUpper() );
             //display matches on the textbox
             textBox3.Lines = matches.ToArray();
+
+            textBox1.SelectAll();
         }//search click
 
         /// <summary>
