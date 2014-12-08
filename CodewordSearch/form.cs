@@ -12,7 +12,7 @@ namespace CodewordSearch
     public partial class form : Form
     {
         //path to sqlite databse file
-        string path = @"C:\Users\brian\Documents\Visual Studio 2010\Projects\CodewordSearchGUI\CodewordSearchGUI\test.sqlite";
+        string path = @"test.sqlite";
         //connection to the database
         private SQLite.Search connection;
 
